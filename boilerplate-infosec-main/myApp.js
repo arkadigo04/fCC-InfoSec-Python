@@ -9,9 +9,9 @@ app.use(helmet.frameguard({action : 'deny'}));
 
 app.use(helmet.xssFilter()); //Para detectar insercciones del usuario maliciciosas para ataques XSS (Comando de sitio cruzado)
 
-app.use(helmet.noSniff());
+app.use(helmet.noSniff()); //Ver la cabeceera del archivo
 
-
+app.use(helmet.ieNoOpen());
 
 
 
