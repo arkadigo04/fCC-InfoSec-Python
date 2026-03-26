@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const helmet = require('helmet');
+/*
 app.use(helmet());
 
 app.use(helmet.hidePoweredBy());
@@ -20,11 +21,22 @@ app.use(helmet.dnsPrefetchControl()); //Desactivar dns para ser mas seguro
 
 app.use(helmet.noCache()); //intentar desactivar la cache del navegador del cliente 
 
-app.use(helmet.contentSecurityPolicy({directives:{defaultSrc:["'self'"],scriptSrc:["'self'", "trusted-cdn.com"]}}));
+app.use(helmet.contentSecurityPolicy({directives:{defaultSrc:["'self'"],scriptSrc:["'self'", "trusted-cdn.com"]}})); //Permitir x ficheros pero rastrear para evitar XSS, seguimientos, marcos malos...
 
+*/
 
-
-
+app.use(helmet({
+  frameguard: {         // Configura una de las reglas que viene por defecto
+    action: 'deny'
+  },
+  contentSecurityPolicy: {    // Enciende el CSP (que venía apagado) y le da la lista blanca
+    directives: {
+      defaultSrc: ["'self'"],
+      styleSrc: ['style.com'],
+    }
+  },
+  dnsPrefetchControl: false     // Apaga una regla que venía encendida por defecto
+}));
 
 
 
