@@ -11,9 +11,10 @@ app.use(helmet.xssFilter()); //Para detectar insercciones del usuario malicicios
 
 app.use(helmet.noSniff()); //Ver la cabeceera del archivo
 
-app.use(helmet.ieNoOpen());
+app.use(helmet.ieNoOpen()); //No abrir HTML malicioso
 
-
+const timeInSeconds = 90*24*60*60;
+app.use(helmet.hsts({maxAge: timeInSeconds, force:true}));
 
 
 
