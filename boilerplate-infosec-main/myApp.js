@@ -14,7 +14,9 @@ app.use(helmet.noSniff()); //Ver la cabeceera del archivo
 app.use(helmet.ieNoOpen()); //No abrir HTML malicioso
 
 const timeInSeconds = 90*24*60*60;
-app.use(helmet.hsts({maxAge: timeInSeconds, force:true}));
+app.use(helmet.hsts({maxAge: timeInSeconds, force:true})); //Solicitar https
+
+app.use(helmet.dnsPrefetchControl());
 
 
 
