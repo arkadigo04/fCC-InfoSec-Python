@@ -20,7 +20,7 @@ app.use(helmet.dnsPrefetchControl()); //Desactivar dns para ser mas seguro
 
 app.use(helmet.noCache()); //intentar desactivar la cache del navegador del cliente 
 
-
+app.use(helmet.contentSecurityPolicy({directives:{defaultSrc:["'self'"],scriptSrc:["'self'", "trusted-cdn.com"]}}));
 
 
 
