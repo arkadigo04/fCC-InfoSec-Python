@@ -16,21 +16,9 @@ app.use(helmet.ieNoOpen()); //No abrir HTML malicioso
 const timeInSeconds = 90*24*60*60;
 app.use(helmet.hsts({maxAge: timeInSeconds, force:true})); //Solicitar https
 
-app.use(helmet.dnsPrefetchControl());
+app.use(helmet.dnsPrefetchControl()); //Desactivar dns para ser mas seguro
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+app.use(helmet.noCache()); //intentar desactivar la cache del navegador del cliente 
 
 
 
