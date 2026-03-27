@@ -25,6 +25,7 @@ app.use(helmet.contentSecurityPolicy({directives:{defaultSrc:["'self'"],scriptSr
 
 */
 
+//Todo se puede hacer aqui 
 app.use(helmet({
   frameguard: {         // Configura una de las reglas que viene por defecto
     action: 'deny'
